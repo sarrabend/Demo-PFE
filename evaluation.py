@@ -1,6 +1,5 @@
 import pandas as pd 
 import streamlit as st 
-import matplotlib as plt 
 import plotly.graph_objects as go
 
 st.title("Evaluation of the Generated Data (Informational Ads - Demographic Groups)")
