@@ -11,8 +11,8 @@ dataset=st.sidebar.radio("Choose the generated dataset you want to display",
 
 
 
-inf_dg=pd.read_csv("../Data/ads_dg.csv",index_col=0)
-inf_cb=pd.read_csv("../Data/ads_cb.csv")
+inf_dg=pd.read_csv("Data/ads_dg.csv",index_col=0)
+inf_cb=pd.read_csv("Data/ads_cb.csv")
 
 if dataset == "Informational Ads - Demographic Groups" :
     st.markdown("## Informational Ads")

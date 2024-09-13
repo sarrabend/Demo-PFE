@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 st.title("Evaluation of the Generated Data (Informational Ads - Demographic Groups)")
 
-data=pd.read_csv("../Data/ads_claims_scores_dg.csv")
+data=pd.read_csv("Data/ads_claims_scores_dg.csv")
 
 criteria=st.sidebar.radio("Choose the evaluation criteria",
                 ["Diversity","Coherence"]
@@ -16,7 +16,7 @@ if criteria == "Diversity" :
     axis=st.selectbox("Dimension",["Inter Group","Inter Topic"])
     if axis == "Inter Group" : 
         st.markdown("### Inter Group Similarity Scores")
-        ig=pd.read_csv("../Data/bert_score_inter_type_dg.csv")
+        ig=pd.read_csv("Data/bert_score_inter_type_dg.csv")
         men_women=ig[ig["pair"]=="men-women"]["bertscore"]
         elderly_young=ig[ig["pair"]=="young_adults-elderly_people"]["bertscore"]
         neutral_women=ig[ig["pair"]=="neutral-women"]["bertscore"]
@@ -44,10 +44,10 @@ if criteria == "Diversity" :
         st.plotly_chart(fig)
     elif axis=="Inter Topic" : 
         st.markdown("### Inter Group Similarity Scores")
-        men=pd.read_csv("../Data/bert_similarity_scores_inter_topic_m.csv")["score"]
-        women=pd.read_csv("../Data/bert_similarity_scores_inter_topic_w.csv")["score"]
-        young=pd.read_csv("../Data/bert_similarity_scores_inter_topic_ya.csv")["score"]
-        elderly=pd.read_csv("../Data/bert_similarity_scores_inter_topic_ep.csv")["score"]
+        men=pd.read_csv("Data/bert_similarity_scores_inter_topic_m.csv")["score"]
+        women=pd.read_csv("Data/bert_similarity_scores_inter_topic_w.csv")["score"]
+        young=pd.read_csv("Data/bert_similarity_scores_inter_topic_ya.csv")["score"]
+        elderly=pd.read_csv("Data/bert_similarity_scores_inter_topic_ep.csv")["score"]
         fig = go.Figure()
         fig.add_trace(go.Box(y=men, name="Men", marker_color='#00A4CC'))
         fig.add_trace(go.Box(y=women, name='Women', marker_color='#FFB74D'))

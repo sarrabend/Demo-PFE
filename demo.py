@@ -8,7 +8,7 @@ import json
 st.title("Example Demo : running the pipeline on an article from the Guardian News dataset")
 #  Generation 
 st.markdown("## **Select an Article**")
-df3=pd.read_csv("../Data/ads_dg.csv",index_col=0)
+df3=pd.read_csv("Data/ads_dg.csv",index_col=0)
 title = st.selectbox("Choose Title",df3["Title"])
 row=df3.loc[df3['Title'] == title]
 id=row.index[0]
@@ -29,7 +29,7 @@ if prompt=="Prompt 1" :
         for i in range(1, 101):
             progress_bar.progress(i)
             time.sleep(0.02)
-        df1=pd.read_csv("../Data/ads_dg_0.csv")
+        df1=pd.read_csv("Data/ads_dg_0.csv")
         row_1=df1.loc[df1['Title'] == title]
         st.dataframe(row_1[["neutral","young_adults","elderly_people","men","women"]],hide_index=True)
 
@@ -54,7 +54,7 @@ The 5 ads should include :
         for i in range(1, 101):
             progress_bar.progress(i)
             time.sleep(0.03)
-        df2=pd.read_csv("../Data/ads_dg_1.csv")
+        df2=pd.read_csv("Data/ads_dg_1.csv")
         row_2=df2.loc[df2['Title'] == title]
         st.dataframe(row_2[["neutral","young_adults","elderly_people","men","women"]],hide_index=True)
 
@@ -136,7 +136,7 @@ if st.button("Extract Claims") :
     for i in range(1, 101):
         progress_bar.progress(i)
         time.sleep(0.02)
-    with open('../Data/ads_claims.json', 'r') as f:
+    with open('Data/ads_claims.json', 'r') as f:
         data = json.load(f)
 
     for article in data : 
@@ -158,7 +158,7 @@ if st.button("Calculate NLI Score"):
     for i in range(1, 101):
         progress_bar.progress(i)
         time.sleep(0.04)
-    results=pd.read_csv("../Data/ads_claims_scores_dg.csv")
+    results=pd.read_csv("Data/ads_claims_scores_dg.csv")
     row=results[results['articleId'] == id]
     # row=row[["articleId","adId","claimId","entailment","neutral","contradiction"]]
     st.markdown("**Used NLI equations**")
